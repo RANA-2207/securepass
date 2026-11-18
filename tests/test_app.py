@@ -20,3 +20,8 @@ def test_api_check():
 
 def test_health():
     assert app.test_client().get("/health").get_json() == {"status": "ok"}
+
+
+def test_footer_shows_team():
+    resp = app.test_client().get("/")
+    assert b"Made by" in resp.data
